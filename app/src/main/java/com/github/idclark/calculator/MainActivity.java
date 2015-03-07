@@ -1,7 +1,7 @@
 package com.github.idclark.calculator;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -12,22 +12,21 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.github.idclark.calculator.CalculatorBrain.CalculatorBrain;
 
-public class MainActivity extends ActionBarActivity implements OnClickListener {
 
-
+public class MainActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
+            getFragmentManager().beginTransaction()
                     .add(R.id.container, new CalculatorFragment())
                     .commit();
         }
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -51,17 +50,15 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onClick(View v) {
-
-    }
-
     /**
      * A placeholder fragment containing a simple view.
      */
     public static class CalculatorFragment extends Fragment implements OnClickListener {
 
         private TextView mCalculatorDisplay;
+        private Boolean userEnteringNumber = false;
+        private CalculatorBrain mCalculatorBrain;
+        private static final String DIGITS = "0123456789.";
 
         public CalculatorFragment() {
         }
@@ -70,6 +67,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            mCalculatorBrain = new CalculatorBrain();
 
             mCalculatorDisplay = (TextView) rootView.findViewById(R.id.textView);
 
@@ -99,7 +97,38 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
         @Override
         public void onClick(View v) {
             String buttonPressed = ((Button )v).getText().toString();
-            mCalculatorDisplay.setText(buttonPressed);
+
+            if (DIGITS.contains(buttonPressed)) {
+
+                // digit was pressed
+                if (userEnteringNumber) {
+                    if (buttonPressed.equals(".") && mCalculatorDisplay.getText().toString().contains(".")) {
+                        // ERROR PREVENTION
+                        // Eliminate entering multiple decimals
+                    } else {
+                        mCalculatorDisplay.append(buttonPressed);
+                    }
+
+                } else {
+                    if (buttonPressed.equals(".")) {
+                        // ERROR PREVENTION
+                        // This will avoid error if only the decimal is hit before an operator, by placing a leading zero
+                        // before the decimal
+                        mCalculatorDisplay.setText(0 + buttonPressed);
+                    } else {
+                        mCalculatorDisplay.setText(buttonPressed);
+                    }
+                    userEnteringNumber = true;
+                }
+
+            } else {
+                if (userEnteringNumber) {
+                    mCalculatorBrain.setOperand(Double.parseDouble(mCalculatorDisplay.getText().toString()));
+                    userEnteringNumber = false;
+                }
+                mCalculatorBrain.performOperation(buttonPressed);
+                mCalculatorDisplay.setText(mCalculatorBrain.getResult());
+            }
 
         }
     }
