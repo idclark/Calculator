@@ -58,7 +58,8 @@ public class MainActivity extends ActionBarActivity {
         private Boolean userEnteringNumber = false;
         private CalculatorBrain mCalculatorBrain;
         private static final String DIGITS = "0123456789.";
-        DecimalFormat df = new DecimalFormat("@############");
+        DecimalFormat df = new DecimalFormat("@############.###########");
+
 
         public CalculatorFragment() {
         }
