@@ -1,215 +1,265 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".MainActivity$CalculatorFragment"
     android:orientation="vertical"
-    android:background="#ffd3d3d3">
+    android:background="#ffd3d3d3"
+    android:weightSum="1">
 
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="0"
+        android:text="@string/zero"
         android:id="@+id/textView"
-        android:layout_alignEnd="@+id/textView"
-        android:textSize="65dp"
+        android:fontFamily="helvetica"
+        android:textSize="65sp"
         android:textAlignment="gravity"
-        android:gravity="right" />
+        android:gravity="end"
+        android:textColor="#FFFFFF"
+        android:background="#545454"
+        android:layout_weight="0.4"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:columnCount="4"
+        android:rowCount="4"
+        android:layout_weight="0.12">
 
         <Button
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_width="0dp"
+            android:fontFamily="helvetica"
             android:text="@string/AC"
-            android:id="@+id/AC"
             android:layout_weight="0.25"
-            android:background="#e5e5e5"
-            style="?android:attr/borderlessButtonStyle"/>
+            android:id="@+id/AC"
+            style="?android:attr/borderlessButtonStyle"
+            android:textSize="30sp" />
         <Button
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_width="0dp"
             android:text="@string/plusminus"
-            android:id="@+id/plusminus"
+            android:fontFamily="helvetica"
             android:layout_weight="0.25"
-            android:background="#e5e5e5"
-            style="?android:attr/borderlessButtonStyle"/>
+            android:id="@+id/plusminus"
+            style="?android:attr/borderlessButtonStyle"
+            android:textSize="30sp"/>
         <Button
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_width="0dp"
             android:text="@string/percent"
-            android:id="@+id/percent"
+            android:fontFamily="helvetica"
             android:layout_weight="0.25"
-            android:background="#e5e5e5"
-            style="?android:attr/borderlessButtonStyle"/>
+            android:id="@+id/percent"
+            style="?android:attr/borderlessButtonStyle"
+            android:textSize="30sp"/>
         <Button
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_width="0dp"
             android:text="@string/div"
+            android:fontFamily="helvetica"
             android:id="@+id/div"
             android:layout_weight="0.25"
-            android:background="#FF9900"
-            style="?android:attr/borderlessButtonStyle"/>
+            android:background="@drawable/selector_orange"
+            android:textColor="#FFFFFF"
+            style="?android:attr/borderlessButtonStyle"
+            android:textSize="30sp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_weight="0.12">
 
         <Button
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_width="0dp"
             android:text="@string/nine"
             android:id="@+id/nine"
             android:layout_weight="0.25"
-            android:background="#e5e5e5"
-            style="?android:attr/borderlessButtonStyle"/>
+            android:background="@drawable/selector_grey"
+            android:fontFamily="helvetica"
+            style="?android:attr/borderlessButtonStyle"
+            android:textSize="30sp"/>
         <Button
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_width="0dp"
             android:text="@string/eight"
             android:id="@+id/eight"
             android:layout_weight="0.25"
-            android:background="#e5e5e5"
-            style="?android:attr/borderlessButtonStyle"/>
+            android:background="@drawable/selector_grey"
+            android:fontFamily="helvetica"
+            style="?android:attr/borderlessButtonStyle"
+            android:textSize="30sp"/>
         <Button
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_width="0dp"
             android:text="@string/seven"
             android:id="@+id/seven"
             android:layout_weight="0.25"
-            android:background="#e5e5e5"
-            style="?android:attr/borderlessButtonStyle"/>
+            android:background="@drawable/selector_grey"
+            android:fontFamily="helvetica"
+            style="?android:attr/borderlessButtonStyle"
+            android:textSize="30sp"/>
         <Button
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_width="0dp"
             android:id="@+id/mult"
             android:text="@string/mult"
             android:layout_weight="0.25"
-            android:background="#FF9900"
-            style="?android:attr/borderlessButtonStyle"/>
+            android:background="@drawable/selector_orange"
+            android:textColor="#FFFFFF"
+            android:fontFamily="helvetica"
+            style="?android:attr/borderlessButtonStyle"
+            android:textSize="30sp"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_weight="0.12">
 
         <Button
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_width="0dp"
             android:text="@string/six"
             android:id="@+id/six"
             android:layout_weight="0.25"
-            android:background="#e5e5e5"
-            style="?android:attr/borderlessButtonStyle"/>
+            android:background="@drawable/selector_grey"
+            android:fontFamily="helvetica"
+            style="?android:attr/borderlessButtonStyle"
+            android:textSize="30sp"/>
         <Button
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_width="0dp"
             android:text="@string/five"
             android:id="@+id/five"
             android:layout_weight="0.25"
-            android:background="#e5e5e5"
-            style="?android:attr/borderlessButtonStyle"/>
+            android:background="@drawable/selector_grey"
+            android:fontFamily="helvetica"
+            style="?android:attr/borderlessButtonStyle"
+            android:textSize="30sp"/>
         <Button
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_width="0dp"
             android:text="@string/four"
             android:id="@+id/four"
             android:layout_weight="0.25"
-            android:background="#e5e5e5"
-            style="?android:attr/borderlessButtonStyle"/>
+            android:fontFamily="helvetica"
+            android:background="@drawable/selector_grey"
+            style="?android:attr/borderlessButtonStyle"
+            android:textSize="30sp"/>
         <Button
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_width="0dp"
             android:text="@string/minus"
             android:id="@+id/minus"
             android:layout_weight="0.25"
-            android:background="#FF9900"
-            style="?android:attr/borderlessButtonStyle"/>
+            android:background="@drawable/selector_orange"
+            android:textColor="#FFFFFF"
+            android:fontFamily="helvetica"
+            style="?android:attr/borderlessButtonStyle"
+            android:textSize="30sp"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
+        android:orientation="horizontal"
+        android:layout_weight="0.12">
         <Button
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_width="0dp"
             android:text="@string/three"
             android:id="@+id/three"
             android:layout_weight="0.25"
-            android:background="#e5e5e5"
-            style="?android:attr/borderlessButtonStyle"/>
+            android:background="@drawable/selector_grey"
+            android:fontFamily="helvetica"
+            style="?android:attr/borderlessButtonStyle"
+            android:textSize="30sp"/>
         <Button
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_width="0dp"
             android:text="@string/two"
             android:id="@+id/two"
             android:layout_weight="0.25"
-            android:background="#e5e5e5"
-            style="?android:attr/borderlessButtonStyle"/>
+            android:background="@drawable/selector_grey"
+            android:fontFamily="helvetica"
+            style="?android:attr/borderlessButtonStyle"
+            android:textSize="30sp"/>
         <Button
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_width="0dp"
             android:text="@string/one"
             android:id="@+id/one"
             android:layout_weight="0.25"
-            android:background="#e5e5e5"
-            style="?android:attr/borderlessButtonStyle"/>
+            android:background="@drawable/selector_grey"
+            android:fontFamily="helvetica"
+            style="?android:attr/borderlessButtonStyle"
+            android:textSize="30sp"/>
         <Button
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_width="0dp"
             android:text="@string/plus"
             android:id="@+id/plus"
             android:layout_weight="0.25"
-            android:background="#FF9900"
-            style="?android:attr/borderlessButtonStyle"/>
+            android:background="@drawable/selector_orange"
+            android:fontFamily="helvetica"
+            android:textColor="#FFFFFF"
+            style="?android:attr/borderlessButtonStyle"
+            android:textSize="30sp"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_weight="0.12">
 
         <Button
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_width="0dp"
             android:layout_weight="0.5"
             android:text="@string/zero"
             android:id="@+id/zero"
-            android:background="#e5e5e5"
-            style="?android:attr/borderlessButtonStyle"/>
+            android:background="@drawable/selector_grey"
+            android:fontFamily="helvetica"
+            style="?android:attr/borderlessButtonStyle"
+            android:textSize="30sp"/>
         <Button
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_width="0dp"
             android:text="@string/dec"
             android:id="@+id/dec"
             android:layout_weight="0.25"
-            android:background="#e5e5e5"
-            style="?android:attr/borderlessButtonStyle"/>
+            android:fontFamily="helvetica"
+            android:background="@drawable/selector_grey"
+            style="?android:attr/borderlessButtonStyle"
+            android:textSize="30sp"/>
         <Button
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_width="0dp"
             android:text="@string/equal"
             android:id="@+id/equal"
             android:layout_weight="0.25"
-            android:background="#FF9900"
-            style="?android:attr/borderlessButtonStyle"/>
+            android:background="@drawable/selector_orange"
+            android:fontFamily="helvetica"
+            android:textColor="#FFFFFF"
+            style="?android:attr/borderlessButtonStyle"
+            android:textSize="30sp"/>
     </LinearLayout>
 </LinearLayout>

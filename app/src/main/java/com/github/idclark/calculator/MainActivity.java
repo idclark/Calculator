@@ -1,7 +1,7 @@
 package com.github.idclark.calculator;
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -12,8 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.github.idclark.calculator.CalculatorBrain.CalculatorBrain;
-
+import java.text.DecimalFormat;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -59,6 +58,7 @@ public class MainActivity extends ActionBarActivity {
         private Boolean userEnteringNumber = false;
         private CalculatorBrain mCalculatorBrain;
         private static final String DIGITS = "0123456789.";
+        DecimalFormat df = new DecimalFormat("@############");
 
         public CalculatorFragment() {
         }
@@ -66,6 +66,12 @@ public class MainActivity extends ActionBarActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
+
+//            //Restore variables on screen orientation change
+//            mCalculatorBrain.setOperand(savedInstanceState.getDouble("OPERAND"));
+//            mCalculatorBrain.setMemory(savedInstanceState.getDouble("MEMORY"));
+//            mCalculatorDisplay.setText(df.format(mCalculatorBrain.getResult()));
+
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             mCalculatorBrain = new CalculatorBrain();
 
@@ -90,6 +96,55 @@ public class MainActivity extends ActionBarActivity {
             rootView.findViewById(R.id.minus).setOnClickListener(this);
             rootView.findViewById(R.id.dec).setOnClickListener(this);
             rootView.findViewById(R.id.equal).setOnClickListener(this);
+
+            if (rootView.findViewById(R.id.MR) != null) {
+                rootView.findViewById(R.id.MR).setOnClickListener(this);
+            }
+            if (rootView.findViewById(R.id.Mplus) != null) {
+                rootView.findViewById(R.id.Mplus).setOnClickListener(this);
+            }
+            if (rootView.findViewById(R.id.Mminus) != null) {
+                rootView.findViewById(R.id.Mminus).setOnClickListener(this);
+            }
+            if (rootView.findViewById(R.id.squared) != null) {
+                rootView.findViewById(R.id.squared).setOnClickListener(this);
+            }
+            if (rootView.findViewById(R.id.cubed) != null) {
+                rootView.findViewById(R.id.cubed).setOnClickListener(this);
+            }
+            if (rootView.findViewById(R.id.etox) != null) {
+                rootView.findViewById(R.id.etox).setOnClickListener(this);
+            }
+            if (rootView.findViewById(R.id.tentox) != null) {
+                rootView.findViewById(R.id.tentox).setOnClickListener(this);
+            }
+            if (rootView.findViewById(R.id.etox) != null) {
+                rootView.findViewById(R.id.etox).setOnClickListener(this);
+            }
+            if (rootView.findViewById(R.id.oneoverx) != null) {
+                rootView.findViewById(R.id.oneoverx).setOnClickListener(this);
+            }
+            if (rootView.findViewById(R.id.sqrt) != null) {
+                rootView.findViewById(R.id.sqrt).setOnClickListener(this);
+            }
+            if (rootView.findViewById(R.id.sin) != null) {
+                rootView.findViewById(R.id.sin).setOnClickListener(this);
+            }
+            if (rootView.findViewById(R.id.cos) != null) {
+                rootView.findViewById(R.id.cos).setOnClickListener(this);
+            }
+            if (rootView.findViewById(R.id.tan) != null) {
+                rootView.findViewById(R.id.tan).setOnClickListener(this);
+            }
+            if (rootView.findViewById(R.id.naturallog) != null) {
+                rootView.findViewById(R.id.naturallog).setOnClickListener(this);
+            }
+            if (rootView.findViewById(R.id.pi) != null) {
+                rootView.findViewById(R.id.pi).setOnClickListener(this);
+            }
+            if (rootView.findViewById(R.id.random) != null) {
+                rootView.findViewById(R.id.random).setOnClickListener(this);
+            }
 
             return rootView;
         }
@@ -127,9 +182,18 @@ public class MainActivity extends ActionBarActivity {
                     userEnteringNumber = false;
                 }
                 mCalculatorBrain.performOperation(buttonPressed);
-                mCalculatorDisplay.setText(mCalculatorBrain.getResult());
+                mCalculatorDisplay.setText(df.format(mCalculatorBrain.getResult()));
             }
 
         }
+
+        @Override
+        public void onSaveInstanceState(Bundle oldState) {
+            super.onSaveInstanceState(oldState);
+            oldState.putDouble("OPERAND", mCalculatorBrain.getResult());
+            oldState.putDouble("MEMORY", mCalculatorBrain.getMemory());
+
+        }
+
     }
 }
