@@ -3,6 +3,7 @@ package com.github.idclark.calculator;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -58,7 +59,7 @@ public class MainActivity extends ActionBarActivity {
         private Boolean userEnteringNumber = false;
         private CalculatorBrain mCalculatorBrain;
         private static final String DIGITS = "0123456789.";
-        DecimalFormat df = new DecimalFormat("@############.###########");
+        DecimalFormat df = new DecimalFormat("@##########");
 
 
         public CalculatorFragment() {
@@ -108,18 +109,23 @@ public class MainActivity extends ActionBarActivity {
                 rootView.findViewById(R.id.Mminus).setOnClickListener(this);
             }
             if (rootView.findViewById(R.id.squared) != null) {
+                ((TextView) rootView.findViewById(R.id.squared)).setText(Html.fromHtml("X<sup>2</sup>"));
                 rootView.findViewById(R.id.squared).setOnClickListener(this);
             }
             if (rootView.findViewById(R.id.cubed) != null) {
+                ((TextView) rootView.findViewById(R.id.cubed)).setText(Html.fromHtml("X<sup>3</sup>"));
                 rootView.findViewById(R.id.cubed).setOnClickListener(this);
             }
             if (rootView.findViewById(R.id.etox) != null) {
+                ((TextView) rootView.findViewById(R.id.etox)).setText(Html.fromHtml("e<small>x</sup>"));
                 rootView.findViewById(R.id.etox).setOnClickListener(this);
             }
             if (rootView.findViewById(R.id.tentox) != null) {
+                ((TextView) rootView.findViewById(R.id.tentox)).setText(Html.fromHtml("10<sup>x</sup>"));
                 rootView.findViewById(R.id.tentox).setOnClickListener(this);
             }
             if (rootView.findViewById(R.id.etox) != null) {
+                ((TextView) rootView.findViewById(R.id.etox)).setText(Html.fromHtml("e<sup>x</sup>"));
                 rootView.findViewById(R.id.etox).setOnClickListener(this);
             }
             if (rootView.findViewById(R.id.oneoverx) != null) {

@@ -83,13 +83,14 @@
         <Button
             android:layout_height="match_parent"
             android:layout_width="0dp"
-            android:text="@string/nine"
-            android:id="@+id/nine"
+            android:text="@string/seven"
+            android:id="@+id/seven"
             android:layout_weight="0.25"
             android:background="@drawable/selector_grey"
             android:fontFamily="helvetica"
             style="?android:attr/borderlessButtonStyle"
             android:textSize="30sp"/>
+
         <Button
             android:layout_height="match_parent"
             android:layout_width="0dp"
@@ -100,16 +101,18 @@
             android:fontFamily="helvetica"
             style="?android:attr/borderlessButtonStyle"
             android:textSize="30sp"/>
+
         <Button
             android:layout_height="match_parent"
             android:layout_width="0dp"
-            android:text="@string/seven"
-            android:id="@+id/seven"
+            android:text="@string/nine"
+            android:id="@+id/nine"
             android:layout_weight="0.25"
             android:background="@drawable/selector_grey"
             android:fontFamily="helvetica"
             style="?android:attr/borderlessButtonStyle"
             android:textSize="30sp"/>
+
         <Button
             android:layout_height="match_parent"
             android:layout_width="0dp"
@@ -133,13 +136,14 @@
         <Button
             android:layout_height="match_parent"
             android:layout_width="0dp"
-            android:text="@string/six"
-            android:id="@+id/six"
+            android:text="@string/four"
+            android:id="@+id/four"
             android:layout_weight="0.25"
-            android:background="@drawable/selector_grey"
             android:fontFamily="helvetica"
+            android:background="@drawable/selector_grey"
             style="?android:attr/borderlessButtonStyle"
             android:textSize="30sp"/>
+
         <Button
             android:layout_height="match_parent"
             android:layout_width="0dp"
@@ -150,16 +154,18 @@
             android:fontFamily="helvetica"
             style="?android:attr/borderlessButtonStyle"
             android:textSize="30sp"/>
+
         <Button
             android:layout_height="match_parent"
             android:layout_width="0dp"
-            android:text="@string/four"
-            android:id="@+id/four"
+            android:text="@string/six"
+            android:id="@+id/six"
             android:layout_weight="0.25"
-            android:fontFamily="helvetica"
             android:background="@drawable/selector_grey"
+            android:fontFamily="helvetica"
             style="?android:attr/borderlessButtonStyle"
             android:textSize="30sp"/>
+
         <Button
             android:layout_height="match_parent"
             android:layout_width="0dp"
@@ -179,11 +185,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_weight="0.12">
+
         <Button
             android:layout_height="match_parent"
             android:layout_width="0dp"
-            android:text="@string/three"
-            android:id="@+id/three"
+            android:text="@string/one"
+            android:id="@+id/one"
             android:layout_weight="0.25"
             android:background="@drawable/selector_grey"
             android:fontFamily="helvetica"
@@ -202,8 +209,8 @@
         <Button
             android:layout_height="match_parent"
             android:layout_width="0dp"
-            android:text="@string/one"
-            android:id="@+id/one"
+            android:text="@string/three"
+            android:id="@+id/three"
             android:layout_weight="0.25"
             android:background="@drawable/selector_grey"
             android:fontFamily="helvetica"

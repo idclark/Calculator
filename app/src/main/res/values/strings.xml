@@ -7,10 +7,10 @@
     <string name="SubtractFromMemory">M-</string>
     <string name="RecallMemory">MR</string>
     <string name="plusminus">+/-</string>
-    <string name="squared">x<sup>2</sup></string>
-    <string name="cubed">x<SUP>3</SUP></string>
-    <string name="etox">e<SUP>x</SUP></string>
-    <string name="tentox">10<sup>x</sup></string>
+    <string name="squared">x<![CDATA[<sup>2</sup>]]></string>
+    <!--<string name="cubed">x<sup><small>3</small></sup></string>-->
+    <!--<string name="etox">e<sup><small>x</small></sup></string>-->
+    <!--<string name="tentox">10<sup><small>x</small></sup></string>-->
     <string name="oneoverx">1/x</string>
     <string name="squareroot">sqrt</string>
     <string name="sin">sin</string>
