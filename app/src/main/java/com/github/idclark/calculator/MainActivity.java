@@ -57,7 +57,7 @@ public class MainActivity extends ActionBarActivity {
 
         private TextView mCalculatorDisplay;
         private Boolean userEnteringNumber = false;
-        private CalculatorBrain mCalculatorBrain;
+        private CalculatorLogic mCalculatorLogic;
         private static final String DIGITS = "0123456789.";
         DecimalFormat df = new DecimalFormat("@##########");
 
@@ -75,7 +75,7 @@ public class MainActivity extends ActionBarActivity {
 //            mCalculatorDisplay.setText(df.format(mCalculatorBrain.getResult()));
 
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            mCalculatorBrain = new CalculatorBrain();
+            mCalculatorLogic = new CalculatorLogic();
 
             mCalculatorDisplay = (TextView) rootView.findViewById(R.id.textView);
 
@@ -185,11 +185,11 @@ public class MainActivity extends ActionBarActivity {
 
             } else {
                 if (userEnteringNumber) {
-                    mCalculatorBrain.setOperand(Double.parseDouble(mCalculatorDisplay.getText().toString()));
+                    mCalculatorLogic.setOperand(Double.parseDouble(mCalculatorDisplay.getText().toString()));
                     userEnteringNumber = false;
                 }
-                mCalculatorBrain.performOperation(buttonPressed);
-                mCalculatorDisplay.setText(df.format(mCalculatorBrain.getResult()));
+                mCalculatorLogic.performOperation(buttonPressed);
+                mCalculatorDisplay.setText(df.format(mCalculatorLogic.getResult()));
             }
 
         }
@@ -197,8 +197,8 @@ public class MainActivity extends ActionBarActivity {
         @Override
         public void onSaveInstanceState(Bundle oldState) {
             super.onSaveInstanceState(oldState);
-            oldState.putDouble("OPERAND", mCalculatorBrain.getResult());
-            oldState.putDouble("MEMORY", mCalculatorBrain.getMemory());
+            oldState.putDouble("OPERAND", mCalculatorLogic.getResult());
+            oldState.putDouble("MEMORY", mCalculatorLogic.getMemory());
 
         }
 

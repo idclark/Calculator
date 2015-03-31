@@ -9,7 +9,7 @@ package com.github.idclark.calculator;
  * 9 is the result of the operation
  *
  */
-public class CalculatorBrain {
+public class CalculatorLogic {
 
     private double mOperand;
     private double mWaitingOperand;
@@ -42,7 +42,7 @@ public class CalculatorBrain {
     public static final String RANDOM_NUM = "rand";
     public static final String PERCENT = "%";
 
-    public CalculatorBrain() {
+    public CalculatorLogic() {
         mOperand = 0;
         mWaitingOperand = 0;
         mWaitingOperator = "";
