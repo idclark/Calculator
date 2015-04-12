@@ -4,7 +4,6 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,17 +13,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.android.gms.common.api.PendingResult;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.tagmanager.Container;
-import com.google.android.gms.tagmanager.ContainerHolder;
-import com.google.android.gms.tagmanager.TagManager;
-
 import java.text.DecimalFormat;
-import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends ActionBarActivity {
-    private static final String CONTAINER_ID = "GTM-KNWNN4";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,35 +26,6 @@ public class MainActivity extends ActionBarActivity {
                     .add(R.id.container, new CalculatorFragment())
                     .commit();
         }
-
-        TagManager tagManager = TagManager.getInstance(this);
-
-        tagManager.setVerboseLoggingEnabled(true);
-
-        PendingResult<ContainerHolder> pending =
-                tagManager.loadContainerPreferNonDefault(CONTAINER_ID,
-                        R.raw.gtmknwnn4v1);
-
-        // The onResult method will be called as soon as one of the following happens:
-        //     1. a saved container is loaded
-        //     2. if there is no saved container, a network container is loaded
-        //     3. the request times out. The example below uses a constant to manage the timeout period.
-        pending.setResultCallback(new ResultCallback<ContainerHolder>() {
-            @Override
-            public void onResult(ContainerHolder containerHolder) {
-                ContainerHolderSingleton.setContainerHolder(containerHolder);
-                Container container = containerHolder.getContainer();
-                if (!containerHolder.getStatus().isSuccess()) {
-                    Log.e("CuteAnimals", "failure loading container");
-                    //displayErrorToUser(R.string.load_error);
-                    return;
-                }
-                ContainerHolderSingleton.setContainerHolder(containerHolder);
-               // ContainerLoadedCallback.registerCallbacksForContainer(container);
-               // containerHolder.setContainerAvailableListener(new ContainerLoadedCallback());
-              //  startMainActivity();
-            }
-        }, 2, TimeUnit.SECONDS);
     }
 
     @Override
@@ -107,10 +69,12 @@ public class MainActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
 
-//            //Restore variables on screen orientation change
-//            mCalculatorBrain.setOperand(savedInstanceState.getDouble("OPERAND"));
-//            mCalculatorBrain.setMemory(savedInstanceState.getDouble("MEMORY"));
-//            mCalculatorDisplay.setText(df.format(mCalculatorBrain.getResult()));
+            //Restore variables on screen orientation change
+            if (savedInstanceState != null) {
+               mCalculatorLogic.setOperand(savedInstanceState.getDouble("OPERAND"));
+               mCalculatorLogic.setMemory(savedInstanceState.getDouble("MEMORY"));
+               mCalculatorDisplay.setText(df.format(mCalculatorLogic.getResult()));
+            }
 
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             mCalculatorLogic = new CalculatorLogic();
