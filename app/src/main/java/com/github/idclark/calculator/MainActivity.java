@@ -69,13 +69,8 @@ public class MainActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
 
-            //Restore variables on screen orientation change
-            if (savedInstanceState != null) {
-               mCalculatorLogic.setOperand(savedInstanceState.getDouble("OPERAND"));
-               mCalculatorLogic.setMemory(savedInstanceState.getDouble("MEMORY"));
-               mCalculatorDisplay.setText(df.format(mCalculatorLogic.getResult()));
-            }
 
+            setRetainInstance(true);
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             mCalculatorLogic = new CalculatorLogic();
 
@@ -197,8 +192,21 @@ public class MainActivity extends ActionBarActivity {
         }
 
         @Override
+        public void onActivityCreated(Bundle savedInstanceState) {
+            super.onActivityCreated(savedInstanceState);
+            //Restore variables on screen orientation change
+            if (savedInstanceState != null) {
+                mCalculatorLogic.setOperand(savedInstanceState.getDouble("OPERAND"));
+                mCalculatorLogic.setMemory(savedInstanceState.getDouble("MEMORY"));
+                mCalculatorDisplay.setText(df.format(mCalculatorLogic.getResult()));
+            }
+
+        }
+
+        @Override
         public void onSaveInstanceState(Bundle oldState) {
             super.onSaveInstanceState(oldState);
+            //oldState.putDouble("TEXT", mCalculatorDisplay.getText());
             oldState.putDouble("OPERAND", mCalculatorLogic.getResult());
             oldState.putDouble("MEMORY", mCalculatorLogic.getMemory());
 

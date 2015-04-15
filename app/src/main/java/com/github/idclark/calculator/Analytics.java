@@ -21,11 +21,8 @@ public class Analytics extends Application {
         if (!mTrackers.containsKey(trackerId)) {
 
             GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
-            Tracker t = (trackerId == TrackerName.APP_TRACKER) ? analytics.newTracker(PROPERTY_ID)
-                    : (trackerId == TrackerName.GLOBAL_TRACKER) ? analytics.newTracker(R.xml.global_tracker)
-                    : analytics.newTracker(R.xml.ecommerce_tracker);
+            Tracker t =  analytics.newTracker(R.xml.global_tracker);
             mTrackers.put(trackerId, t);
-
         }
         return mTrackers.get(trackerId);
     }

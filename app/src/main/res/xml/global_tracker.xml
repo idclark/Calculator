@@ -6,11 +6,8 @@
     <bool name="ga_autoActivityTracking">true</bool>
 
     <!-- The screen names that will appear in reports -->
-    <screenName name="com.google.android.gms.analytics.samples.mobileplayground.ScreenviewFragment">
-        AnalyticsSampleApp ScreenViewSampleScreen
-    </screenName>
-    <screenName name="com.google.android.gms.analytics.samples.mobileplayground.EcommerceFragment">
-        AnalyticsSampleApp EcommerceSampleScreen
+    <screenName name="com.github.idclark.calculator.MainActivity.CalculatorFragment">
+        Calculator MainscreenView
     </screenName>
     <!--  The following value should be replaced with correct property id. -->
     <string name="ga_trackingId">UA-61315847-1</string>
